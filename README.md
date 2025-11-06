@@ -1,25 +1,35 @@
-# 📷 QrCodeService
+# 📷 QrCodeService & 📦 BarcodeService
 
-QrCodeService is a lightweight and modular backend API built with ASP.NET Core that generates downloadable QR codes from user-provided URLs. It’s ideal for websites, business cards, marketing materials, and any scenario where quick access via QR is needed.
+QrCodeService is a lightweight and modular backend API built with ASP.NET Core that generates downloadable QR codes and barcodes from user-provided data. It’s ideal for websites, business cards, marketing materials, inventory systems, and any scenario where quick access or identification via code is needed.
 
 ---
 
 ## 📦 Project Structure
 
-- `Controllers` – RESTful API endpoints  
-- `Services` – QR code generation logic using QRCoder  
+- `Controllers` – RESTful API endpoints for QR and barcode generation  
+- `Services` – Logic for generating QR codes (QRCoder) and barcodes (ZXing.Net)  
 - `Program.cs` – Application startup and dependency injection  
-- `wwwroot` (optional) – Static file hosting for saved QR images
+- `wwwroot` (optional) – Static file hosting for saved images
 
 ---
 
 ## 🚀 Features
 
+### ✅ QR Code Endpoints (`/api/qr`)
 - Generate QR code from any valid URL  
+- Generate QR code from plain text  
+- Generate QR code from email address  
+- Generate QR code from phone number  
+- Generate QR code from WiFi credentials (SSID, password, encryption)  
 - Return QR code as downloadable PNG image  
-- Simple GET endpoint with query parameter  
-- Integrated Swagger UI for testing and documentation  
-- Easily extendable to support other QR types (text, WiFi, phone, etc.)
+- Integrated Swagger UI for testing and documentation
+
+### ✅ Barcode Endpoints (`/api/barcode`)
+- Generate barcode from plain text  
+- Generate barcode from phone number  
+- Generate barcode from email address  
+- Return barcode as downloadable PNG image  
+- Uses CODE_128 format for broad compatibility
 
 ---
 
@@ -39,17 +49,5 @@ cd QrCodeService
 dotnet restore
 dotnet run
 ```
-## 📸 Example Usage
-```bash
-GET /api/qr?url=https://example.com
-```
----
-## ✨ Future Enhancements
-- Save QR generation history to SQL Server
-- Add JWT-based authentication
-- Support for additional QR types (WiFi, SMS, vCard)
-- Email delivery of generated QR codes
-- Frontend integration with Blazor or React
----
 ## 📄 License
 This project is licensed under the MIT License. See the LICENSE file for details.
